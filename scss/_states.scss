@@ -16,16 +16,7 @@
 ///
 /// @type Map
 $o-labels-states: (
-	normal: (
-		color: oColorsGetColorFor(o-labels-normal, text),
-		background: oColorsGetColorFor(o-labels-normal, background)
-	),
-	active: (
-		color: oColorsGetColorFor(o-labels-active, text),
-		background: oColorsGetColorFor(o-labels-active, background)
-	),
-	error: (
-		color: oColorsGetColorFor(o-labels-error, text),
-		background: oColorsGetColorFor(o-labels-error, background)
-	)
+	normal,
+	active,
+	error
 ) !default;

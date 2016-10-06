@@ -31,9 +31,7 @@
 ///
 /// @param {String} $theme
 @mixin oLabelsState($state) {
-	@each $property, $value in map-get($o-labels-states, $state) {
-		#{$property}: #{$value};
-	}
+	@include oColorsFor(o-labels-#{$state}, text background);
 }
 
 /// Label construct
