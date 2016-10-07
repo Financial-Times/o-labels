@@ -4,6 +4,6 @@ $o-labels-is-silent: false;
 @import "o-typography/main";
 
 body {
-	@include oTypographySansBold(m);
+	@include oTypographySansBold(xs);
 	margin: 1em;
 }

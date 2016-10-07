@@ -59,17 +59,20 @@ $_o-labels-warned-size: false;
 /// 	@include oLabels(big);
 /// }
 ///
-/// @param {String} $size (medium)
 /// @param {String} $state (normal)
-@mixin oLabels($size: medium, $state: normal) {
+/// @param {String} $size (false)
+@mixin oLabels($state: normal, $size: false) {
 	display: inline-block;
 	box-sizing: border-box;
 	vertical-align: middle;
 	margin: 0;
-	border-radius: 3px;
 	text-align: center;
 	text-decoration: none;
+	padding: .2em .6em;
 
-	@include oLabelsSize($size);
+	@if $size {
+		@include oLabelsSize($size);
+	}
+
 	@include oLabelsState($state);
 }
