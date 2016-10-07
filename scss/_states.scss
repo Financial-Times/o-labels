@@ -20,6 +20,26 @@ $o-labels-states: (
 	error: (
 		text: 'white',
 		background: 'red'
+	),
+	pending: (
+		text: 'white',
+		background: 'org-b2b'
+	),
+	live: (
+		text: 'white',
+		background: 'red'
+	),
+	closed: (
+		text: 'white',
+		background: 'grey-tint4'
+	),
+	premium: (
+		text: 'white',
+		background: 'black'
+	),
+	brand: (
+		text: 'white',
+		background: 'claret'
 	)
 ) !default;
 
