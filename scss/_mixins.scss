@@ -64,7 +64,7 @@ $_o-labels-warned-size: false;
 @mixin oLabels($state: normal, $size: false) {
 	display: inline-block;
 	box-sizing: border-box;
-	vertical-align: middle;
+	vertical-align: 1px;
 	margin: 0;
 	text-align: center;
 	text-decoration: none;
