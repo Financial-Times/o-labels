@@ -68,7 +68,7 @@ $_o-labels-warned-size: false;
 	margin: 0;
 	text-align: center;
 	text-decoration: none;
-	padding: .2em .6em;
+	padding: 0.2em 0.6em;
 
 	@if $size {
 		@include oLabelsSize($size);
