@@ -1,3 +1,6 @@
+$_o-labels-warned-size: false;
+
+
 ////
 /// @group o-labels
 /// @link http://registry.origami.ft.com/components/o-labels
@@ -13,6 +16,11 @@
 ///
 /// @param {String} $size
 @mixin oLabelsSize($size) {
+	@if not $_o-labels-warned-size and ($size == 'medium' or $size == 'big') {
+		@warn 'oLabelsSize and .#{$o-labels-class}--\#{$size} are deprecated. Use o-typography sizing instead.';
+		$_o-labels-warned-size: true !global;
+	}
+
 	$label-dimensions: map-get($o-labels-sizes, $size);
 
 	padding-left: map-get($label-dimensions, padding-left);
