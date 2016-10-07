@@ -11,6 +11,10 @@ body {
 	@include oTypographySansBold(xs);
 }
 
-.label-large {
-	@include oTypographySansBold(s);
+.demo-paragraph {
+	@include oTypographySans(m);
+
+	.o-labels {
+		@include oTypographySansBold(s);
+	}
 }
