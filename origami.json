@@ -26,6 +26,12 @@
 			"template": "/demos/src/states.mustache",
 			"expanded": true,
 			"description": ""
+		},
+		{
+			"name": "Typography",
+			"template": "/demos/src/typography.mustache",
+			"expanded": true,
+			"description": "use with o-typography"
 		}
 	]
 }

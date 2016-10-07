@@ -10,3 +10,7 @@ body {
 .o-labels {
 	@include oTypographySansBold(xs);
 }
+
+.label-large {
+	@include oTypographySansBold(s);
+}
