@@ -22,8 +22,8 @@
 	},
 	"demos": [
 		{
-			"name": "label",
-			"template": "/demos/src/label.mustache",
+			"name": "States",
+			"template": "/demos/src/states.mustache",
 			"expanded": true,
 			"description": ""
 		}
