@@ -1,0 +1,141 @@
+////
+/// @group o-label
+/// @link http://registry.origami.ft.com/components/o-label
+////
+
+/// Helper for `o-brand` function.
+/// @access private
+@function _oLabelGet($variables, $from: null) {
+	@return oBrandGet($component: 'o-label', $variables: $variables, $from: $from);
+}
+
+/// Helper for `o-brand` function.
+/// @access private
+@function _oLabelSupports($variant) {
+	@return oBrandSupportsVariant($component: 'o-label', $variant: $variant);
+}
+
+// Define shared brand configurations
+$_label-border-width: 1px;
+$_o-label-shared-brand-config: (
+	default-font-size: nth(oTypographyGetScale(0), 1) * 1px,
+	default-border-width: $_label-border-width,
+	default-padding: (oTypographySpacingSize(1) - $_label-border-width) (oTypographySpacingSize(2) - $_label-border-width),
+	'big': (
+		font-size: nth(oTypographyGetScale(1), 1) * 1px,
+		padding: (oTypographySpacingSize(2) - $_label-border-width) (oTypographySpacingSize(3) - $_label-border-width)
+	),
+	'small': (
+		font-size: nth(oTypographyGetScale(-1), 1) * 1px,
+		padding: (oTypographySpacingSize(1) - $_label-border-width) (oTypographySpacingSize(1) - $_label-border-width)
+	)
+);
+
+// Define masterbrand
+@if oBrandGetCurrentBrand() == 'master' {
+	@include oBrandDefine('o-label', 'master', (
+		'variables': map-merge($_o-label-shared-brand-config, (
+			default-text-color: oColorsGetPaletteColor('white'),
+			default-background-color: oColorsGetPaletteColor('oxford'),
+			'wide': (
+				padding: (oTypographySpacingSize(1) - $_label-border-width) (oTypographySpacingSize(4) - $_label-border-width),
+				text-transform: uppercase
+			),
+			'content-commercial': (
+				background-color: oColorsGetTint('jade', 50)
+			),
+			'content-premium': (
+				background-color: oColorsGetPaletteColor('black')
+			),
+			'lifecycle-alpha': (
+				background-color: oColorsGetPaletteColor('paper'),
+				border-color: oColorsMix('black', 'paper', 20),
+				text-color: oColorsMix('black', 'paper', 80)
+			),
+			'lifecycle-beta': (
+				background-color: oColorsGetPaletteColor('paper'),
+				border-color: oColorsMix('black', 'paper', 20),
+				text-color: oColorsMix('black', 'paper', 80)
+			)
+		)),
+		'supports-variants': (
+			'big',
+			'small',
+			'wide',
+			'content-commercial',
+			'content-premium',
+			'lifecycle-alpha',
+			'lifecycle-beta'
+		)
+	));
+}
+
+// Define internal brand
+@if oBrandGetCurrentBrand() == 'internal' {
+	@include oBrandDefine('o-label', 'internal', (
+		'variables': map-merge($_o-label-shared-brand-config, (
+			default-background-color: oColorsMix('black', 'white', 10),
+			'support-active': (
+				background-color: oColorsMix('jade', 'black', 70)
+			),
+			'support-dead': (
+				background-color: oColorsGetPaletteColor('black')
+			),
+			'support-deprecated': (
+				background-color: oColorsGetPaletteColor('crimson')
+			),
+			'support-experimental': (
+				background-color: oColorsGetPaletteColor('lemon')
+			),
+			'support-maintained': (
+				background-color: oColorsMix('jade', 'black', 70)
+			),
+			'tier-bronze': (
+				// NOTE: service tiers not in o-colors yet, will be moved if another
+				// component needs to use these colours
+				background-color: #b78d83
+			),
+			'tier-gold': (
+				// NOTE: service tiers not in o-colors yet, will be moved if another
+				// component needs to use these colours
+				background-color: #b89d62
+			),
+			'tier-platinum': (
+				// NOTE: service tiers not in o-colors yet, will be moved if another
+				// component needs to use these colours
+				background-color: #e5e4e2
+			),
+			'tier-silver': (
+				// NOTE: service tiers not in o-colors yet, will be moved if another
+				// component needs to use these colours
+				background-color: #c0c0c0
+			),
+		)),
+		'supports-variants': (
+			'big',
+			'small',
+			'support-active',
+			'support-dead',
+			'support-deprecated',
+			'support-experimental',
+			'support-maintained',
+			'tier-bronze',
+			'tier-gold',
+			'tier-platinum',
+			'tier-silver'
+		)
+	));
+}
+
+// Define whitelabel brand
+@if oBrandGetCurrentBrand() == 'whitelabel' {
+	@include oBrandDefine('o-label', 'whitelabel', (
+		'variables': map-merge($_o-label-shared-brand-config, (
+			default-background-color: oColorsMix('black', 'white', 10)
+		)),
+		'supports-variants': (
+			'big',
+			'small'
+		)
+	));
+}

@@ -1,0 +1,50 @@
+////
+/// @group o-label
+/// @link http://registry.origami.ft.com/components/o-label
+////
+
+@mixin oLabelBase() {
+	.o-label {
+		@include oTypographySans;
+		font-size: _oLabelGet('default-font-size');
+		font-weight: 500;
+		line-height: 1;
+		display: inline-block;
+		box-sizing: border-box;
+		margin: 0;
+		text-align: center;
+		text-decoration: none;
+		color: _oLabelGet('default-text-color');
+		padding: _oLabelGet('default-padding');
+		background-color: _oLabelGet('default-background-color');
+		border: solid _oLabelGet('default-border-width') transparent;
+	}
+}
+
+@mixin oLabelSize($size) {
+	.o-label--#{$size} {
+		font-size: _oLabelGet('font-size', $size);
+		padding: _oLabelGet('padding', $size);
+		text-transform: _oLabelGet('text-transform', $size);
+	}
+}
+
+@mixin oLabelState($state-name, $variant: null) {
+	.o-label--#{$state-name} {
+		// If we have a custom config, we use that instead of one of the
+		// preconfigured states
+		@include _oLabelStateOptions(if($variant, $variant, $state-name));
+	}
+}
+
+@mixin _oLabelStateOptions($variant) {
+	background-color: _oLabelGet('background-color', $variant);
+	border-color: _oLabelGet('border-color', $variant);
+
+	// Set text colour or calculate based on background
+	@if _oLabelGet('text-color', $variant) {
+		color: _oLabelGet('text-color', $variant);
+	} @else {
+		color: oColorsGetTextColor(_oLabelGet('background-color', $variant), 100);
+	}
+}

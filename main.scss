@@ -1,34 +1,35 @@
+
+@import 'o-brand/main';
 @import "o-colors/main";
 @import "o-typography/main";
 
-@import "scss/states";
-@import "scss/variables";
-@import "scss/mixins";
+@import "src/scss/brand";
+@import "src/scss/variables";
+@import "src/scss/mixins";
 
-@if ($o-labels-is-silent == false) {
-	.#{$o-labels-class} {
-		@include oLabels;
+@if ($o-label-is-silent == false) {
+
+	// Basic label styles
+	@include oLabelBase;
+
+	// Label size variants
+	@if _oLabelSupports('big') {
+		@include oLabelSize('big');
+	}
+	@if _oLabelSupports('small') {
+		@include oLabelSize('small');
+	}
+	@if _oLabelSupports('wide') {
+		@include oLabelSize('wide');
 	}
 
-	@each $size, $scale in $o-labels-sizes {
-		.#{$o-labels-class}--#{$size} {
-			@if ($size == 'wide') {
-				padding: 0 20px;
-				text-transform: uppercase;
-				font-weight: 500;
-			}
-			@include oTypographySans($scale);
-		}
-	}
-
-	@each $state, $colors in $o-labels-states {
-		@if $state != normal {
-			.#{$o-labels-class}--#{$state} {
-				@include oLabelsState($state);
-			}
+	// Label state variants
+	@each $state in $_o-label-states {
+		@if _oLabelSupports($state) {
+			@include oLabelState($state);
 		}
 	}
 
 	// Set module to silent again
-	$o-labels-is-silent: true !global;
+	$o-label-is-silent: true !global;
 }
