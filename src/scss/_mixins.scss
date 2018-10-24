@@ -2,7 +2,7 @@
 @mixin oLabelBase() {
 	.o-label {
 		@include oTypographySans;
-		font-size: _oLabelGet('default-font-size');
+		font-size: _oLabelGet('font-size');
 		font-weight: 500;
 		line-height: 1;
 		display: inline-block;
@@ -10,10 +10,10 @@
 		margin: 0;
 		text-align: center;
 		text-decoration: none;
-		color: _oLabelGet('default-text-color');
-		padding: _oLabelGet('default-padding');
-		background-color: _oLabelGet('default-background-color');
-		border: solid _oLabelGet('default-border-width') transparent;
+		color: _oLabelGet('text-color');
+		padding: _oLabelGet('padding');
+		background-color: _oLabelGet('background-color');
+		border: solid _oLabelGet('border-width') transparent;
 	}
 }
 
