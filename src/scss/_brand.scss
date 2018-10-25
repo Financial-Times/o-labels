@@ -35,26 +35,19 @@ $_o-labels-shared-brand-config: (
 		'variables': map-merge($_o-labels-shared-brand-config, (
 			text-color: oColorsGetPaletteColor('white'),
 			background-color: oColorsGetPaletteColor('oxford'),
-			'wide': (
-				padding-vertical: oTypographySpacingSize(1),
-				padding-horizontal: oTypographySpacingSize(4),
-				text-transform: uppercase
-			),
 			'content-commercial': (
 				background-color: oColorsGetTint('jade', 50)
 			),
 			'content-premium': (
 				background-color: oColorsGetPaletteColor('black')
 			),
-			'lifecycle-alpha': (
-				background-color: oColorsGetPaletteColor('paper'),
-				border-color: oColorsMix('black', 'paper', 20),
-				text-color: oColorsMix('black', 'paper', 80)
-			),
 			'lifecycle-beta': (
 				background-color: oColorsGetPaletteColor('paper'),
 				border-color: oColorsMix('black', 'paper', 20),
-				text-color: oColorsMix('black', 'paper', 80)
+				text-color: oColorsMix('black', 'paper', 80),
+				padding-vertical: oTypographySpacingSize(1),
+				padding-horizontal: oTypographySpacingSize(4),
+				text-transform: uppercase
 			)
 		)),
 		'supports-variants': (
