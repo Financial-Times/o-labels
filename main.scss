@@ -7,29 +7,29 @@
 @import "src/scss/variables";
 @import "src/scss/mixins";
 
-@if ($o-label-is-silent == false) {
+@if ($o-labels-is-silent == false) {
 
 	// Basic label styles
-	@include oLabelBase;
+	@include oLabelsBase;
 
 	// Label size variants
-	@if _oLabelSupports('big') {
-		@include oLabelSize('big');
+	@if _oLabelsSupports('big') {
+		@include oLabelsSize('big');
 	}
-	@if _oLabelSupports('small') {
-		@include oLabelSize('small');
+	@if _oLabelsSupports('small') {
+		@include oLabelsSize('small');
 	}
-	@if _oLabelSupports('wide') {
-		@include oLabelSize('wide');
+	@if _oLabelsSupports('wide') {
+		@include oLabelsSize('wide');
 	}
 
 	// Label state variants
-	@each $state in $_o-label-states {
-		@if _oLabelSupports($state) {
-			@include oLabelState($state);
+	@each $state in $_o-labels-states {
+		@if _oLabelsSupports($state) {
+			@include oLabelsState($state);
 		}
 	}
 
 	// Set module to silent again
-	$o-label-is-silent: true !global;
+	$o-labels-is-silent: true !global;
 }

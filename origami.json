@@ -3,7 +3,7 @@
 	"origamiType": "module",
 	"origamiCategory": "components",
 	"origamiVersion": 1,
-	"support": "https://github.com/Financial-Times/o-label/issues",
+	"support": "https://github.com/Financial-Times/o-labels/issues",
 	"supportContact": {
 		"email": "origami.support@ft.com",
 		"slack": "financialtimes/ft-origami"
@@ -14,7 +14,7 @@
 		"optional": []
 	},
 	"ci": {
-		"circle": "https://circleci.com/api/v1/project/Financial-Times/o-label"
+		"circle": "https://circleci.com/api/v1/project/Financial-Times/o-labels"
 	},
 	"demosDefaults": {
 		"sass": "demos/src/demo.scss",

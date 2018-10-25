@@ -3,14 +3,14 @@
 /// Set to false to output default label classes
 ///
 /// @type Boolean
-$o-label-is-silent: true !default;
+$o-labels-is-silent: true !default;
 
 /// Label states
 /// A list used to loop over all label states.
 /// For actual values: (@see _brand.scss).
 ///
 /// @type List
-$_o-label-states: (
+$_o-labels-states: (
 	'content-commercial',
 	'content-premium',
 	'lifecycle-alpha',
