@@ -1,5 +1,9 @@
 {
-	"description": "Label styling",
+	"description": "Labels for content classification or to emphasise a value",
+	"keywords": [
+		"label",
+		"tag"
+	],
 	"origamiType": "module",
 	"origamiCategory": "components",
 	"origamiVersion": 1,
