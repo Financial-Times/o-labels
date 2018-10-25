@@ -1,0 +1,54 @@
+
+@mixin oLabelsBase() {
+	.o-labels {
+		@include oTypographySans($scale: _oLabelsGet('font-scale'), $line-height: 1em);
+		font-weight: 500;
+		text-align: center;
+		display: inline-block;
+		box-sizing: border-box;
+		margin: 0;
+		text-decoration: none;
+		padding: (_oLabelsGet('padding-vertical') - _oLabelsGet('border-width')) (_oLabelsGet('padding-horizontal') - _oLabelsGet('border-width'));
+		color: _oLabelsGet('text-color');
+		background-color: _oLabelsGet('background-color');
+		border: solid _oLabelsGet('border-width') transparent;
+	}
+}
+
+@mixin oLabelsSize($size) {
+	.o-labels--#{$size} {
+		// We use the scale and set font size manually to rely on the cascade rather
+		// than repeating the font family and line height from the main label class
+		@if _oLabelsGet('font-scale', $size) {
+			// TODO is there a nicer way to get this number?
+			font-size: nth(oTypographyGetScale(_oLabelsGet('font-scale', $size)), 1) * 1px;
+		}
+		padding: (_oLabelsGet('padding-vertical', $size) - _oLabelsGet('border-width')) (_oLabelsGet('padding-horizontal', $size) - _oLabelsGet('border-width'));
+		text-transform: _oLabelsGet('text-transform', $size);
+	}
+}
+
+@mixin oLabelsState($state-name, $variant: null) {
+
+	// If we have a custom config, we use that instead of one of the
+	// preconfigured states
+	$variant: if($variant, $variant, $state-name);
+
+	.o-labels--#{$state-name} {
+		background-color: _oLabelsGet('background-color', $variant);
+		border-color: _oLabelsGet('border-color', $variant);
+		text-transform: _oLabelsGet('text-transform', $variant);
+
+		// Set text colour or calculate based on background
+		@if _oLabelsGet('text-color', $variant) {
+			color: _oLabelsGet('text-color', $variant);
+		} @else {
+			color: oColorsGetTextColor(_oLabelsGet('background-color', $variant), 100);
+		}
+
+		// Set padding overrides if specified
+		@if _oLabelsGet('padding-vertical', $variant) and _oLabelsGet('padding-horizontal', $variant) {
+			padding: (_oLabelsGet('padding-vertical', $variant) - _oLabelsGet('border-width')) (_oLabelsGet('padding-horizontal', $variant) - _oLabelsGet('border-width'));
+		}
+	}
+}
