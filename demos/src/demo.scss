@@ -1,12 +1,7 @@
 
 $o-label-is-silent: false;
-$o-typography-is-silent: false;
-
-@import "o-typography/main";
 
 @import "../../main";
-
-@include oFontsIncludeAll();
 
 body {
 	margin: 1em;
