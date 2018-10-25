@@ -30,21 +30,20 @@
 }
 
 @mixin oLabelState($state-name, $variant: null) {
+
+	// If we have a custom config, we use that instead of one of the
+	// preconfigured states
+	$variant: if($variant, $variant, $state-name);
+
 	.o-label--#{$state-name} {
-		// If we have a custom config, we use that instead of one of the
-		// preconfigured states
-		@include _oLabelStateOptions(if($variant, $variant, $state-name));
-	}
-}
+		background-color: _oLabelGet('background-color', $variant);
+		border-color: _oLabelGet('border-color', $variant);
 
-@mixin _oLabelStateOptions($variant) {
-	background-color: _oLabelGet('background-color', $variant);
-	border-color: _oLabelGet('border-color', $variant);
-
-	// Set text colour or calculate based on background
-	@if _oLabelGet('text-color', $variant) {
-		color: _oLabelGet('text-color', $variant);
-	} @else {
-		color: oColorsGetTextColor(_oLabelGet('background-color', $variant), 100);
+		// Set text colour or calculate based on background
+		@if _oLabelGet('text-color', $variant) {
+			color: _oLabelGet('text-color', $variant);
+		} @else {
+			color: oColorsGetTextColor(_oLabelGet('background-color', $variant), 100);
+		}
 	}
 }
