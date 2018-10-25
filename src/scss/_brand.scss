@@ -14,15 +14,18 @@
 // Define shared brand configurations
 $_o-label-shared-brand-config: (
 	font-scale: 0,
-	padding-scale: (1 2),
+	padding-vertical: oTypographySpacingSize(1),
+	padding-horizontal: oTypographySpacingSize(2),
 	border-width: 1px,
 	'big': (
 		font-scale: 1,
-		padding-scale: (2 3)
+		padding-vertical: oTypographySpacingSize(2),
+		padding-horizontal: oTypographySpacingSize(3)
 	),
 	'small': (
 		font-scale: -1,
-		padding-scale: 1
+		padding-vertical: oTypographySpacingSize(1),
+		padding-horizontal: oTypographySpacingSize(1)
 	)
 );
 
@@ -33,7 +36,8 @@ $_o-label-shared-brand-config: (
 			text-color: oColorsGetPaletteColor('white'),
 			background-color: oColorsGetPaletteColor('oxford'),
 			'wide': (
-				padding-scale: (1 4),
+				padding-vertical: oTypographySpacingSize(1),
+				padding-horizontal: oTypographySpacingSize(4),
 				text-transform: uppercase
 			),
 			'content-commercial': (

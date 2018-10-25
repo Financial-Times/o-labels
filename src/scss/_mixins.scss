@@ -8,8 +8,7 @@
 		box-sizing: border-box;
 		margin: 0;
 		text-decoration: none;
-		padding: _oLabelPaddingScale(
-		$scale: _oLabelGet('padding-scale'), $border-width: _oLabelGet('border-width'));
+		padding: (_oLabelGet('padding-vertical') - _oLabelGet('border-width')) (_oLabelGet('padding-horizontal') - _oLabelGet('border-width'));
 		color: _oLabelGet('text-color');
 		background-color: _oLabelGet('background-color');
 		border: solid _oLabelGet('border-width') transparent;
@@ -24,7 +23,7 @@
 			// TODO is there a nicer way to get this number?
 			font-size: nth(oTypographyGetScale(_oLabelGet('font-scale', $size)), 1) * 1px;
 		}
-		padding: _oLabelPaddingScale($scale: _oLabelGet('padding-scale', $size), $border-width: _oLabelGet('border-width'));
+		padding: (_oLabelGet('padding-vertical', $size) - _oLabelGet('border-width')) (_oLabelGet('padding-horizontal', $size) - _oLabelGet('border-width'));
 		text-transform: _oLabelGet('text-transform', $size);
 	}
 }
