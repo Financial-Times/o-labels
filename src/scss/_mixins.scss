@@ -1,4 +1,8 @@
 
+/// Base styles for labels.
+/// @output The output includes the `.o-labels` class definition and all styles for a basic label.
+/// @example scss - Base label styles
+///   @include oLabelsBase();
 @mixin oLabelsBase() {
 	.o-labels {
 		@include oTypographySans($scale: _oLabelsGet('font-scale'), $line-height: 1em);
@@ -15,6 +19,11 @@
 	}
 }
 
+/// Size modifiers for labels.
+/// @param {String} $size - The label size to output styles for. One of `'big'` or `'small'`.
+/// @output The output includes the `.o-labels--SIZE` modifier class definition, which includes all overrides.
+/// @example scss - Big label styles
+///   @include oLabelsSize('big');
 @mixin oLabelsSize($size) {
 	.o-labels--#{$size} {
 		// We use the scale and set font size manually to rely on the cascade rather
@@ -28,6 +37,16 @@
 	}
 }
 
+/// State modifiers for labels.
+/// @param {String|Map} $state-name - The label state to output styles for. See README for available states.
+/// @param {Map} $variant [null] - A brand variant configuration which can be used to create custom label states. See README for more examples.
+/// @output The output includes the `.o-labels--STATE` modifier class definition, which includes all overrides.
+/// @example scss - Existing label state
+///   @include oLabelsState('tier-gold');
+/// @example scss - Custom label state
+///   @include oLabelsState('citrus-fruit', (
+///       background-color: oColorsGetPaletteColor('lemon')
+///   ));
 @mixin oLabelsState($state-name, $variant: null) {
 
 	// If we have a custom config, we use that instead of one of the
