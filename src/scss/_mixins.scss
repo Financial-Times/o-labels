@@ -1,17 +1,16 @@
 
 @mixin oLabelBase() {
 	.o-label {
-		@include oTypographySans;
-		font-size: _oLabelGet('font-size');
+		@include oTypographySans($scale: _oLabelGet('font-scale'), $line-height: 1em);
 		font-weight: 500;
-		line-height: 1;
+		text-align: center;
 		display: inline-block;
 		box-sizing: border-box;
 		margin: 0;
-		text-align: center;
 		text-decoration: none;
+		padding: _oLabelPaddingScale(
+		$scale: _oLabelGet('padding-scale'), $border-width: _oLabelGet('border-width'));
 		color: _oLabelGet('text-color');
-		padding: _oLabelGet('padding');
 		background-color: _oLabelGet('background-color');
 		border: solid _oLabelGet('border-width') transparent;
 	}
@@ -19,8 +18,13 @@
 
 @mixin oLabelSize($size) {
 	.o-label--#{$size} {
-		font-size: _oLabelGet('font-size', $size);
-		padding: _oLabelGet('padding', $size);
+		// We use the scale and set font size manually to rely on the cascade rather
+		// than repeating the font family and line height from the main label class
+		@if _oLabelGet('font-scale', $size) {
+			// TODO is there a nicer way to get this number?
+			font-size: nth(oTypographyGetScale(_oLabelGet('font-scale', $size)), 1) * 1px;
+		}
+		padding: _oLabelPaddingScale($scale: _oLabelGet('padding-scale', $size), $border-width: _oLabelGet('border-width'));
 		text-transform: _oLabelGet('text-transform', $size);
 	}
 }

@@ -1,0 +1,15 @@
+
+// (oTypographySpacingSize(2) - $_label-border-width) (oTypographySpacingSize(3) - $_label-border-width)
+
+@function _oLabelPaddingScale($scale, $border-width: 0) {
+	@if type_of($scale) == 'list' and length($scale) == 2 {
+		@return (oTypographySpacingSize(nth($scale, 1)) - $border-width) (oTypographySpacingSize(nth($scale, 2)) - $border-width);
+	}
+	@if type_of($scale) == 'list' and length($scale) == 1 {
+		@return oTypographySpacingSize(nth($scale, 1)) - $border-width;
+	}
+	@if type_of($scale) == 'number' {
+		@return oTypographySpacingSize($scale) - $border-width;
+	}
+	@return null;
+}

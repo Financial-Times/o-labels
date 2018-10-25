@@ -12,18 +12,17 @@
 }
 
 // Define shared brand configurations
-$_label-border-width: 1px;
 $_o-label-shared-brand-config: (
-	font-size: nth(oTypographyGetScale(0), 1) * 1px,
-	border-width: $_label-border-width,
-	padding: (oTypographySpacingSize(1) - $_label-border-width) (oTypographySpacingSize(2) - $_label-border-width),
+	font-scale: 0,
+	padding-scale: (1 2),
+	border-width: 1px,
 	'big': (
-		font-size: nth(oTypographyGetScale(1), 1) * 1px,
-		padding: (oTypographySpacingSize(2) - $_label-border-width) (oTypographySpacingSize(3) - $_label-border-width)
+		font-scale: 1,
+		padding-scale: (2 3)
 	),
 	'small': (
-		font-size: nth(oTypographyGetScale(-1), 1) * 1px,
-		padding: (oTypographySpacingSize(1) - $_label-border-width) (oTypographySpacingSize(1) - $_label-border-width)
+		font-scale: -1,
+		padding-scale: 1
 	)
 );
 
@@ -34,7 +33,7 @@ $_o-label-shared-brand-config: (
 			text-color: oColorsGetPaletteColor('white'),
 			background-color: oColorsGetPaletteColor('oxford'),
 			'wide': (
-				padding: (oTypographySpacingSize(1) - $_label-border-width) (oTypographySpacingSize(4) - $_label-border-width),
+				padding-scale: (1 4),
 				text-transform: uppercase
 			),
 			'content-commercial': (
