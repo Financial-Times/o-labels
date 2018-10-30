@@ -27,7 +27,6 @@ There are several size modifier classes which can be used to change the general 
 
 ```html
 <span class="o-labels o-labels--big">Big Label</span>
-<span class="o-labels o-labels--small">Small Label</span>
 ```
 
 Labels can also have one of several states. The available states depend on which brand you are using (there are no states for whitelabel branded components):
@@ -91,7 +90,7 @@ The `oLabelsBase` mixin is used to output default label styles, including the `o
 }
 ```
 
-The `oLabelsSize` mixin can be used to output a class for one of the label sizes. Valid sizes are `big` and `small`:
+The `oLabelsSize` mixin can be used to output a class for one of the label sizes. The only valid size currently is `big`:
 
 ```scss
 @include oLabelsSize('big');
