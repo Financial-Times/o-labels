@@ -44,7 +44,7 @@ The following states are used to categorise content, mostly on FT.com:
 The following state is used to indicate that a feature is in a beta state:
 
 ```html
-<span class="o-labels o-labels--lifecycle-beta">Beta</span>
+<span class="o-labels o-labels--lifecycle-beta o-labels--wide">Beta</span>
 ```
 
 #### Internal
@@ -91,7 +91,7 @@ The `oLabelsBase` mixin is used to output default label styles, including the `o
 }
 ```
 
-The `oLabelsSize` mixin can be used to output a class for one of the label sizes. Valid sizes are `big` and `small`:
+The `oLabelsSize` mixin can be used to output a class for one of the label sizes. Valid sizes are `big`, `small`, and `wide` (masterbrand only):
 
 ```scss
 @include oLabelsSize('big');

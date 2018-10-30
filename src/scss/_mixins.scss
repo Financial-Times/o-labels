@@ -56,18 +56,12 @@
 	.o-labels--#{$state-name} {
 		background-color: _oLabelsGet('background-color', $variant);
 		border-color: _oLabelsGet('border-color', $variant);
-		text-transform: _oLabelsGet('text-transform', $variant);
 
 		// Set text colour or calculate based on background
 		@if _oLabelsGet('text-color', $variant) {
 			color: _oLabelsGet('text-color', $variant);
 		} @else {
 			color: oColorsGetTextColor(_oLabelsGet('background-color', $variant), 100);
-		}
-
-		// Set padding overrides if specified
-		@if _oLabelsGet('padding-vertical', $variant) and _oLabelsGet('padding-horizontal', $variant) {
-			padding: (_oLabelsGet('padding-vertical', $variant) - _oLabelsGet('border-width')) (_oLabelsGet('padding-horizontal', $variant) - _oLabelsGet('border-width'));
 		}
 	}
 }

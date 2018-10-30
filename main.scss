@@ -19,6 +19,9 @@
 	@if _oLabelsSupports('small') {
 		@include oLabelsSize('small');
 	}
+	@if _oLabelsSupports('wide') {
+		@include oLabelsSize('wide');
+	}
 
 	// Label state variants
 	@each $state in $_o-labels-states {
