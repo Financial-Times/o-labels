@@ -39,10 +39,7 @@ $_o-labels-shared-brand-config: (
 			'lifecycle-beta': (
 				background-color: oColorsGetPaletteColor('paper'),
 				border-color: oColorsGetPaletteColor('black-20'),
-				text-color: oColorsGetPaletteColor('black-80'),
-				padding-vertical: oTypographySpacingSize(1),
-				padding-horizontal: oTypographySpacingSize(4),
-				text-transform: uppercase
+				text-color: oColorsGetPaletteColor('black-80')
 			)
 		)),
 		'supports-variants': (
