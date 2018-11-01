@@ -7,3 +7,7 @@ body {
 	@include oColorsFor('page', 'background');
 	margin: 1em;
 }
+
+.demo-container {
+	margin-bottom: 1em;
+}
