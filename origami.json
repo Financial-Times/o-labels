@@ -79,6 +79,13 @@
 			"title": "Typography",
 			"description": "Labels sitting in line with text that's styled with o-typography.",
 			"template": "/demos/src/typography.mustache"
+		},
+		{
+			"title": "Pa11y",
+			"name": "pa11y",
+			"template": "demos/src/pa11y.mustache",
+			"data": "demos/src/data/pa11y.json",
+			"hidden": true
 		}
 	]
 }
