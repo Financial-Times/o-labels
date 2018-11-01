@@ -12,6 +12,7 @@
 		box-sizing: border-box;
 		margin: 0;
 		text-decoration: none;
+		text-transform: uppercase;
 		padding: (_oLabelsGet('padding-vertical') - _oLabelsGet('border-width')) (_oLabelsGet('padding-horizontal') - _oLabelsGet('border-width'));
 		color: _oLabelsGet('text-color');
 		background-color: _oLabelsGet('background-color');
@@ -20,7 +21,7 @@
 }
 
 /// Size modifiers for labels.
-/// @param {String} $size - The label size to output styles for. One of `'big'` or `'small'`.
+/// @param {String} $size - The label size to output styles for. Currently only `'big'` is a valid size.
 /// @output The output includes the `.o-labels--SIZE` modifier class definition, which includes all overrides.
 /// @example scss - Big label styles
 ///   @include oLabelsSize('big');
@@ -33,7 +34,6 @@
 			font-size: nth(oTypographyGetScale(_oLabelsGet('font-scale', $size)), 1) * 1px;
 		}
 		padding: (_oLabelsGet('padding-vertical', $size) - _oLabelsGet('border-width')) (_oLabelsGet('padding-horizontal', $size) - _oLabelsGet('border-width'));
-		text-transform: _oLabelsGet('text-transform', $size);
 	}
 }
 
@@ -56,18 +56,12 @@
 	.o-labels--#{$state-name} {
 		background-color: _oLabelsGet('background-color', $variant);
 		border-color: _oLabelsGet('border-color', $variant);
-		text-transform: _oLabelsGet('text-transform', $variant);
 
 		// Set text colour or calculate based on background
 		@if _oLabelsGet('text-color', $variant) {
 			color: _oLabelsGet('text-color', $variant);
 		} @else {
 			color: oColorsGetTextColor(_oLabelsGet('background-color', $variant), 100);
-		}
-
-		// Set padding overrides if specified
-		@if _oLabelsGet('padding-vertical', $variant) and _oLabelsGet('padding-horizontal', $variant) {
-			padding: (_oLabelsGet('padding-vertical', $variant) - _oLabelsGet('border-width')) (_oLabelsGet('padding-horizontal', $variant) - _oLabelsGet('border-width'));
 		}
 	}
 }

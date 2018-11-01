@@ -4,5 +4,6 @@ $o-labels-is-silent: false;
 @import "../../main";
 
 body {
+	@include oColorsFor('page', 'background');
 	margin: 1em;
 }
