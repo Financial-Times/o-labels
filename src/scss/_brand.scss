@@ -21,6 +21,11 @@ $_o-labels-shared-brand-config: (
 		font-scale: 0,
 		padding-vertical: oTypographySpacingSize(2),
 		padding-horizontal: oTypographySpacingSize(4)
+	),
+	'small': (
+		font-scale: -2,
+		padding-vertical: oTypographySpacingSize(1),
+		padding-horizontal: oTypographySpacingSize(2)
 	)
 );
 
@@ -44,6 +49,7 @@ $_o-labels-shared-brand-config: (
 		)),
 		'supports-variants': (
 			'big',
+			'small',
 			'content-commercial',
 			'content-premium',
 			'lifecycle-beta'
@@ -94,6 +100,7 @@ $_o-labels-shared-brand-config: (
 		)),
 		'supports-variants': (
 			'big',
+			'small',
 			'support-active',
 			'support-dead',
 			'support-deprecated',
@@ -114,7 +121,8 @@ $_o-labels-shared-brand-config: (
 			background-color: oColorsMix('black', 'white', 10)
 		)),
 		'supports-variants': (
-			'big'
+			'big',
+			'small'
 		)
 	));
 }

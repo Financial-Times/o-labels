@@ -21,7 +21,7 @@
 }
 
 /// Size modifiers for labels.
-/// @param {String} $size - The label size to output styles for. Currently only `'big'` is a valid size.
+/// @param {String} $size - The label size to output styles for. The valid sizes are `big` and `small`.
 /// @output The output includes the `.o-labels--SIZE` modifier class definition, which includes all overrides.
 /// @example scss - Big label styles
 ///   @include oLabelsSize('big');
