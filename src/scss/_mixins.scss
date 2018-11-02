@@ -1,9 +1,41 @@
 
+/// Outputs all available features and styles for labels.
+///
+/// @param {List} $sizes - The label size variants to output styles for.
+/// @param {List} $states - The label state variants to output styles for.
+/// @output The output includes the `.o-labels` class definition as well as class definitions for every variant.
+/// @example scss - All label styles
+///   @include oLabels();
+/// @example scss - Base styles, big size variant, and gold tier state variant
+///   @include oLabels(('big'), ('tier-gold'));
+/// @access public
+@mixin oLabels($sizes: $_o-labels-sizes, $states: $_o-labels-states) {
+
+	// Base label styles
+	@include _oLabelsBase();
+
+	// Label size variants
+	@each $size in $_o-labels-sizes {
+		@if index($sizes, $size) and _oLabelsSupports($size) {
+			@include _oLabelsSize($size);
+		}
+	}
+
+	// Label state variants
+	@each $state in $_o-labels-states {
+		@if index($states, $state) and _oLabelsSupports($state) {
+			@include oLabelsState($state);
+		}
+	}
+}
+
 /// Base styles for labels.
+///
 /// @output The output includes the `.o-labels` class definition and all styles for a basic label.
 /// @example scss - Base label styles
-///   @include oLabelsBase();
-@mixin oLabelsBase() {
+///   @include _oLabelsBase();
+/// @access private
+@mixin _oLabelsBase() {
 	.o-labels {
 		@include oTypographySans($scale: _oLabelsGet('font-scale'), $line-height: 1em);
 		font-weight: 500;
@@ -21,11 +53,13 @@
 }
 
 /// Size modifiers for labels.
+///
 /// @param {String} $size - The label size to output styles for. The valid sizes are `big` and `small`.
 /// @output The output includes the `.o-labels--SIZE` modifier class definition, which includes all overrides.
 /// @example scss - Big label styles
-///   @include oLabelsSize('big');
-@mixin oLabelsSize($size) {
+///   @include _oLabelsSize('big');
+/// @access private
+@mixin _oLabelsSize($size) {
 	.o-labels--#{$size} {
 		// We use the scale and set font size manually to rely on the cascade rather
 		// than repeating the font family and line height from the main label class
@@ -38,6 +72,7 @@
 }
 
 /// State modifiers for labels.
+///
 /// @param {String|Map} $state-name - The label state to output styles for. See README for available states.
 /// @param {Map} $variant [null] - A brand variant configuration which can be used to create custom label states. See README for more examples.
 /// @output The output includes the `.o-labels--STATE` modifier class definition, which includes all overrides.
@@ -47,6 +82,7 @@
 ///   @include oLabelsState('citrus-fruit', (
 ///       background-color: oColorsGetPaletteColor('lemon')
 ///   ));
+/// @access public
 @mixin oLabelsState($state-name, $variant: null) {
 
 	// If we have a custom config, we use that instead of one of the

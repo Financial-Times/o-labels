@@ -1,11 +1,11 @@
 
 @include describe('oLabels mixins') {
 
-	@include describe('oLabelsBase') {
+	@include describe('_oLabelsBase') {
 		@include it('subtracts border width from the padding values') {
 			@include assert() {
 				@include output($selector: false) {
-					@include oLabelsBase;
+					@include _oLabelsBase;
 				};
 				@include contains($selector: false) {
 					$expected-vertical-padding: oTypographySpacingSize(1) - 1px;
@@ -18,12 +18,12 @@
 		};
 	};
 
-	@include describe('oLabelsSize') {
+	@include describe('_oLabelsSize') {
 		@include describe('with $size set to "big"') {
 			@include it('subtracts border width from the padding values') {
 				@include assert() {
 					@include output($selector: false) {
-						@include oLabelsSize('big');
+						@include _oLabelsSize('big');
 					};
 					@include contains($selector: false) {
 						$expected-vertical-padding: oTypographySpacingSize(2) - 1px;
