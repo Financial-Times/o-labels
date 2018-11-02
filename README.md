@@ -70,6 +70,8 @@ The following states are used to represent the FT's service tiers:
 
 ### Sass
 
+#### Silent mode
+
 As with all Origami components, o-labels has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than incorporating its mixins into your own Sass) set `$o-labels-is-silent: false;` in your Sass before you import the o-labels Sass:
 
 ```sass
@@ -77,33 +79,41 @@ $o-labels-is-silent: false;
 @import 'o-labels/main';
 ```
 
-#### Using Sass mixins
+#### Mixin: `oLabels`
 
-The `oLabelsBase` mixin is used to output default label styles, including the `o-labels` class:
+If using o-labels in silent mode, you'll need to use the mixins outlined here to output styles.
+
+The `oLabels` mixin is used to output base styles as well as styles for _all_ of the label sizes and states. This output includes the `o-labels` classes:
 
 ```scss
-@include oLabelsBase;
+@include oLabels();
 ```
 
 ```css
 .o-labels {
     /* styles */
 }
-```
-
-The `oLabelsSize` mixin can be used to output a class for one of the label sizes. The valid sizes are `big` and `small`:
-
-```scss
-@include oLabelsSize('big');
-```
-
-```css
 .o-labels--big {
     /* styles */
 }
+/* etc. */
 ```
 
-The `oLabelsState` mixin can be used to output a class for one of the label states, outlined above in the [markup](#markup) documentation:
+If you wish to specify a subset of sizes and states to output styles for, you can pass in parameters (see [sizes](#sizes) and [states](#states) for available options):
+
+```scss
+@include oLabels(
+    $sizes: ('big'),
+    $states: (
+        'content-commercial',
+        'content-premium'
+    )
+);
+```
+
+#### Mixin: `oLabelsState`
+
+The `oLabelsState` mixin can be used to output a class for one of the label states, outlined in the [states table](#states):
 
 ```scss
 @include oLabelsState('content-commercial');
@@ -129,12 +139,40 @@ The `oLabelsState` mixin also accepts optional custom configurations, which over
 }
 ```
 
+#### Sizes
+
+This table outlines all of the possible sizes you can request in the [`oLabels` mixin](#mixin-olabels):
+
+| Size  | Description                                 | Brand support                |
+|-------|---------------------------------------------|------------------------------|
+| big   | Label with increased font size and padding. | master, internal, whitelabel |
+| small | Label with decreased font size and padding. | master, internal, whitelabel |
+
+#### States
+
+This table outlines all of the possible states you can request in the [`oLabels` mixin](#mixin-olabels) and [`oLabelsState` mixin](#mixin-olabelsstate):
+
+| Size                 | Description                                                   | Brand support |
+|----------------------|---------------------------------------------------------------|---------------|
+| content-commercial   | Used to identify paid posts or promoted content.              | master        |
+| content-premium      | Used to identify premium content.                             | master        |
+| lifecycle-beta       | Used to identify a feature that's in beta.                    | master        |
+| support-active       | Used to indicate that a component is actively maintained.     | internal      |
+| support-maintained   | Used to indicate that a component is maintained.              | internal      |
+| support-experimental | Used to indicate that a component is an experimental feature. | internal      |
+| support-deprecated   | Used to indicate that a component is deprecated.              | internal      |
+| support-dead         | Used to indicate that a component is no longer worked on.     | internal      |
+| tier-platinum        | Used to indicate a service with a platinum service tier.      | internal      |
+| tier-gold            | Used to indicate a service with a gold service tier.          | internal      |
+| tier-silver          | Used to indicate a service with a silver service tier.        | internal      |
+| tier-bronze          | Used to indicate a service with a bronze service tier.        | internal      |
+
 
 ## Migration guide
 
 ### How to upgrade from v3.x.x to v4.x.x?
 
-  - The `oLabels` mixin has been removed and most of the mixins have changed significantly. See the [Sass documentation](sass) for how to use the new and updated mixins
+  - The `oLabels` mixin parameters have been changed, and all of the  mixins have changed significantly. See the [Sass documentation](#sass) for how to use the new and updated mixins
   - The following states have been removed. The decision to remove was based on a search of the various codebases using o-labels, if you need one of the removed states then please contact us and we'll add it back:
     - `active`: This state has been removed entirely
     - `brand`: This state has been removed entirely
