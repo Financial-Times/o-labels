@@ -8,24 +8,7 @@
 @import "src/scss/mixins";
 
 @if ($o-labels-is-silent == false) {
-
-	// Basic label styles
-	@include oLabelsBase;
-
-	// Label size variants
-	@if _oLabelsSupports('big') {
-		@include oLabelsSize('big');
-	}
-	@if _oLabelsSupports('small') {
-		@include oLabelsSize('small');
-	}
-
-	// Label state variants
-	@each $state in $_o-labels-states {
-		@if _oLabelsSupports($state) {
-			@include oLabelsState($state);
-		}
-	}
+	@include oLabels();
 
 	// Set module to silent again
 	$o-labels-is-silent: true !global;
