@@ -15,12 +15,12 @@
 $_o-labels-shared-brand-config: (
 	font-scale: -1,
 	padding-vertical: oTypographySpacingSize(1),
-	padding-horizontal: oTypographySpacingSize(3),
+	padding-horizontal: oTypographySpacingSize(2),
 	border-width: 1px,
 	'big': (
 		font-scale: 0,
 		padding-vertical: oTypographySpacingSize(2),
-		padding-horizontal: oTypographySpacingSize(4)
+		padding-horizontal: oTypographySpacingSize(2)
 	),
 	'small': (
 		font-scale: -2,
@@ -44,7 +44,10 @@ $_o-labels-shared-brand-config: (
 			'lifecycle-beta': (
 				background-color: oColorsGetPaletteColor('paper'),
 				border-color: oColorsGetPaletteColor('black-20'),
-				text-color: oColorsGetPaletteColor('black-80')
+				text-color: oColorsGetPaletteColor('black-80'),
+				text-transform: uppercase,
+				padding-vertical: oTypographySpacingSize(1),
+				padding-horizontal: oTypographySpacingSize(3),
 			)
 		)),
 		'supports-variants': (
