@@ -9,7 +9,7 @@
 				};
 				@include contains($selector: false) {
 					$expected-vertical-padding: oTypographySpacingSize(1) - 1px;
-					$expected-horizontal-padding: oTypographySpacingSize(3) - 1px;
+					$expected-horizontal-padding: oTypographySpacingSize(2) - 1px;
 					.o-labels {
 						padding: $expected-vertical-padding $expected-horizontal-padding;
 					}
@@ -27,7 +27,7 @@
 					};
 					@include contains($selector: false) {
 						$expected-vertical-padding: oTypographySpacingSize(2) - 1px;
-						$expected-horizontal-padding: oTypographySpacingSize(4) - 1px;
+						$expected-horizontal-padding: oTypographySpacingSize(2) - 1px;
 						.o-labels--big {
 							padding: $expected-vertical-padding $expected-horizontal-padding;
 						}
