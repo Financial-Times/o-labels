@@ -36,7 +36,7 @@
 	// Label state variants
 	@each $state in $_o-labels-states {
 		@if index($states, $state) and _oLabelsSupports($state) {
-			@include oLabelsState($state);
+			@include oLabelsAddState($state);
 		}
 	}
 }

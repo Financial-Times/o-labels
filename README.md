@@ -111,12 +111,12 @@ If you wish to specify a subset of sizes and states to output styles for, you ca
 ));
 ```
 
-#### Mixin: `oLabelsState`
+#### Mixin: `oLabelsAddState`
 
-The `oLabelsState` mixin can be used to output a class for one of the label states, outlined in the [states table](#states):
+The `oLabelsAddState` mixin can be used to output a class for one of the label states, outlined in the [states table](#states):
 
 ```scss
-@include oLabelsState('content-commercial');
+@include oLabelsAddState('content-commercial');
 ```
 
 ```css
@@ -125,10 +125,10 @@ The `oLabelsState` mixin can be used to output a class for one of the label stat
 }
 ```
 
-The `oLabelsState` mixin also accepts optional custom configurations, which override defaults or allow you to define your own label states:
+The `oLabelsAddState` mixin also accepts optional custom configurations, which override defaults or allow you to define your own label states:
 
 ```scss
-@include oLabelsState('citrus-fruit', (
+@include oLabelsAddState('citrus-fruit', (
     background-color: oColorsGetPaletteColor('lemon')
 ));
 ```
@@ -150,7 +150,7 @@ This table outlines all of the possible sizes you can request in the [`oLabels` 
 
 #### States
 
-This table outlines all of the possible states you can request in the [`oLabels` mixin](#mixin-olabels) and [`oLabelsState` mixin](#mixin-olabelsstate):
+This table outlines all of the possible states you can request in the [`oLabels` mixin](#mixin-olabels) and [`oLabelsAddState` mixin](#mixin-olabelsaddstate):
 
 | Size                 | Description                                                   | Brand support |
 |----------------------|---------------------------------------------------------------|---------------|

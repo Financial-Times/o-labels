@@ -12,7 +12,7 @@
     - `live`: This state has been removed entirely
     - `pending`: This state has been removed entirely
     - `normal`: The normal state is achieved by not including a state modifier class
-  - The following states have been renamed. This rename applies to both the default classes as well as the value passed into the `oLabelsState` mixin:
+  - The following states have been renamed. This rename applies to both the default classes as well as the value passed into the `oLabelsAddState` mixin:
     - ```diff
       + content-commercial
       - commercial-content
@@ -21,7 +21,7 @@
       + content-premium
       - premium
       ```
-  - o-colors use-cases have been removed. If you wish to configure label colours we now recommend using the `oLabelsState` mixin and passing in variant config.
+  - o-colors use-cases have been removed. If you wish to configure label colours we now recommend using the `oLabelsAddState` mixin and passing in variant config.
 
 ## Migrating from v2 to v3
 
