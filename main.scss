@@ -7,6 +7,40 @@
 @import "src/scss/variables";
 @import "src/scss/mixins";
 
+/// Outputs all available features and styles for labels.
+///
+/// @param {Map} $opts ['sizes': ('big', 'small'), 'states': ( ... )] - Label options including sizes and states to output styles for.
+/// @output The output includes the `.o-labels` class definition as well as class definitions for every variant.
+/// @example scss - All label styles
+///   @include oLabels();
+/// @example scss - Base styles, big size variant, and gold tier state variant
+///   @include oLabels($opts: ('sizes': ('big'), 'states': ('tier-gold'));
+/// @access public
+@mixin oLabels($opts: (
+	'sizes': $_o-labels-sizes,
+	'states': $_o-labels-states
+)) {
+	$sizes: map-get($opts, 'sizes');
+	$states: map-get($opts, 'states');
+
+	// Base label styles
+	@include _oLabelsBase();
+
+	// Label size variants
+	@each $size in $_o-labels-sizes {
+		@if index($sizes, $size) and _oLabelsSupports($size) {
+			@include _oLabelsSize($size);
+		}
+	}
+
+	// Label state variants
+	@each $state in $_o-labels-states {
+		@if index($states, $state) and _oLabelsSupports($state) {
+			@include oLabelsState($state);
+		}
+	}
+}
+
 @if ($o-labels-is-silent == false) {
 	@include oLabels();
 

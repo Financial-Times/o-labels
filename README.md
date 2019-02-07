@@ -99,16 +99,16 @@ The `oLabels` mixin is used to output base styles as well as styles for _all_ of
 /* etc. */
 ```
 
-If you wish to specify a subset of sizes and states to output styles for, you can pass in parameters (see [sizes](#sizes) and [states](#states) for available options):
+If you wish to specify a subset of sizes and states to output styles for, you can pass in options (see [sizes](#sizes) and [states](#states) for available options):
 
 ```scss
-@include oLabels(
+@include oLabels($opts: (
     $sizes: ('big'),
     $states: (
         'content-commercial',
         'content-premium'
     )
-);
+));
 ```
 
 #### Mixin: `oLabelsState`
