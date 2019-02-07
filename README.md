@@ -170,40 +170,17 @@ This table outlines all of the possible states you can request in the [`oLabels`
 
 ## Migration guide
 
-### How to upgrade from v3.x.x to v4.x.x?
-
-  - The `oLabels` mixin parameters have been changed, and all of the  mixins have changed significantly. See the [Sass documentation](#sass) for how to use the new and updated mixins
-  - The following states have been removed. The decision to remove was based on a search of the various codebases using o-labels, if you need one of the removed states then please contact us and we'll add it back:
-    - `active`: This state has been removed entirely
-    - `brand`: This state has been removed entirely
-    - `closed`: This state has been removed entirely
-    - `error`: This state has been removed entirely
-    - `live`: This state has been removed entirely
-    - `pending`: This state has been removed entirely
-    - `normal`: The normal state is achieved by not including a state modifier class
-  - The following states have been renamed. This rename applies to both the default classes as well as the value passed into the `oLabelsState` mixin:
-    - ```diff
-      + content-commercial
-      - commercial-content
-      ```
-    - ```diff
-      + content-premium
-      - premium
-      ```
-  - o-colors use-cases have been removed. If you wish to configure label colours we now recommend using the `oLabelsState` mixin and passing in variant config.
-
-### How to upgrade from v2.x.x to v3.x.x?
-
-V3 of o-labels removes the `oLabelsSize` mixin. To create different sized labels for your product you should use the o-typography mixins as shown in the [controlling label size](#controlling-label-size) section.
-
----
+State | Major Version | Last Minor Release | Migration guide |
+:---: | :---: | :---: | :---:
+✨ active | 4 | N/A | [migrate to v4](MIGRATION.md#migrating-from-v3-to-v4) |
+⚠ maintained | 3 | 3.1.1 | [migrate to v3](MIGRATION.md#migrating-from-v2-to-v3) |
+╳ deprecated | 2 | 2.1.0 | N/A |
+╳ deprecated | 1 | 1.0.6 | N/A |
 
 
 ## Contact
 
 If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/o-labels/issues), visit [#ft-origami](https://financialtimes.slack.com/messages/ft-origami/) or email [Origami Support](mailto:origami-support@ft.com).
-
----
 
 
 ## Licence
