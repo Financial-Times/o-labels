@@ -1,0 +1,61 @@
+
+// Do not output placeholders twice i.e. if o-labels is imported twice.
+// This is a temporary variable, until we can use the new sass `@use` feature
+// that will not have the problem of re-outputting placeholders on every import
+$_o-labels-first-import: true !default;
+
+@if $_o-labels-first-import == true {
+	// shared placeholders
+	%_o-labels-indicator-size {
+		@include oTypographySans(-2);
+	}
+
+	%_o-labels-timestamp-typography {
+		@include oEditorialTypographyTimestamp();
+	}
+
+	// must come after %_o-labels-timestamp-typography
+	// for higher specificity
+	%_o-labels-indicator-live-color {
+		color: oColorsByName('crimson');
+	}
+
+	%_o-labels-indicator-circle {
+		content: '';
+		position: relative;
+		left: 0;
+		width: $_o-labels-indicator-circle-size;
+		height: $_o-labels-indicator-circle-size;
+		margin-right: 5px;
+		border-radius: 50%;
+		background-color: currentcolor;
+		display: inline-block;
+	}
+
+	// timestamp block placeholders
+	%_o-labels-timestamp {
+		@extend %_o-labels-timestamp-typography;
+		@extend %_o-labels-indicator-size;
+	}
+
+	%_o-labels-timestamp--inverse {
+		color: oColorsByName('white');
+	}
+
+	// indicator block placeholders
+	%_o-labels-indicator {
+		@extend %_o-labels-indicator-size;
+		position: relative;
+		display: inline-block;
+	}
+
+	%_o-labels-indicator__status {
+		display: inline-flex;
+		align-items: center;
+		&:before {
+			@extend %_o-labels-indicator-circle;
+		}
+	}
+}
+
+$_o-labels-first-import: false;
