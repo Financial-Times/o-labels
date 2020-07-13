@@ -53,5 +53,13 @@ $_o-labels-indicator-status: (
 	'updated'
 );
 
+/// The width/height of the circle used in the indicator label.
+/// @type Number
+/// @access private
 $_o-labels-indicator-circle-size: #{(10/12)}em; // 10px given 12px font size
+
+/// Whether or not the animation keyframes for the live indicator
+/// label has already been output.
+/// @type Boolean
+/// @access private
 $_o-labels-indicator-live-pulse-output: false !default;

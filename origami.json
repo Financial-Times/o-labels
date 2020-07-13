@@ -89,6 +89,9 @@
 			"name": "indicators",
 			"title": "Indicators",
 			"description": "",
+			"brands": [
+				"master"
+			],
 			"template": "/demos/src/indicators.mustache"
 		},
 		{
@@ -97,12 +100,18 @@
 			"description": "",
 			"data": {"modifiers": ["inverse"]},
 			"documentClasses": "demo-inverse",
+			"brands": [
+				"master"
+			],
 			"template": "/demos/src/indicators.mustache"
 		},
 		{
 			"name": "timestamp",
 			"title": "Timestamp",
 			"description": "",
+			"brands": [
+				"master"
+			],
 			"template": "/demos/src/timestamp.mustache"
 		},
 		{
@@ -111,6 +120,9 @@
 			"description": "",
 			"data": {"modifiers": ["inverse"]},
 			"documentClasses": "demo-inverse",
+			"brands": [
+				"master"
+			],
 			"template": "/demos/src/timestamp.mustache"
 		},
 		{
@@ -125,7 +137,9 @@
 			"name": "custom-indicator",
 			"template": "demos/src/custom.mustache",
 			"data": {"indicator": true},
-			"brands": ["master"],
+			"brands": [
+				"master"
+			],
 			"hidden": true
 		},
 		{

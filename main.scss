@@ -76,20 +76,20 @@
 	}
 
 	// Timestamp label styles
-	@if $indicator-label-status {
+	@if $indicator-label-status and _oLabelsSupports('timestamps') {
 		.o-labels-timestamp {
 			@include oLabelsTimestampContent();
 		}
-	}
 
-	@if $indicator-label-status and $timestamp-label-inverse {
-		.o-labels-timestamp--inverse {
-			@extend %_o-labels-timestamp--inverse;
+		@if $timestamp-label-inverse {
+			.o-labels-timestamp--inverse {
+				@extend %_o-labels-timestamp--inverse;
+			}
 		}
 	}
 
 	// Indicator label styles
-	@if $indicator-label-status {
+	@if $indicator-label-status and _oLabelsSupports('indicators') {
 		.o-labels-indicator {
 			@include oLabelsIndicatorContent($opts: ('block': true));
 		}
@@ -97,17 +97,17 @@
 		.o-labels-indicator__status {
 			@include oLabelsIndicatorContent($opts: ('element': 'status'));
 		}
-	}
 
-	@each $indicator-state in $indicator-label-status {
-		.o-labels-indicator--#{$indicator-state} {
-			@include oLabelsIndicatorContent($opts: ('block': true, 'modifier': $indicator-state));
+		@each $indicator-status in $indicator-label-status {
+			.o-labels-indicator--#{$indicator-status} {
+				@include oLabelsIndicatorContent($opts: ('block': true, 'modifier': $indicator-status));
+			}
 		}
-	}
 
-	@if $indicator-label-status and $indicator-label-inverse {
-		.o-labels-indicator--inverse {
-			@extend %_o-labels-timestamp--inverse;
+		@if $indicator-label-inverse {
+			.o-labels-indicator--inverse {
+				@extend %_o-labels-timestamp--inverse;
+			}
 		}
 	}
 }
