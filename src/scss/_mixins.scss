@@ -222,6 +222,15 @@
 			transform: scale(1.5);
 			animation: _o-labels-live-pulse 1.7s ease infinite;
 			order: -1;
+			// Prevent animation of the live label if the reader has indicated
+			// that they prefer reduced motion. This may be conservative but
+			// as the live indicator is presented alongside content (including
+			// the front page at the time of writing) we do not want to risk
+			// severely distracting some readers.
+			// https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html
+			@media (prefers-reduced-motion) {
+				animation: none;
+			}
 		}
 
 		// output keyframes once when live status is output
