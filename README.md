@@ -1,6 +1,6 @@
 # o-labels
 
-Labels for content classification or to emphasise a value.
+Labels for content classification, to emphasise a value, or highlight a status.
 
 - [Label Types](#label-types)
 - [Markup](#markup)
@@ -20,9 +20,47 @@ There are three types of label:
 
 The standard label is used for content classification or to emphasise a value. For example to highlight commercial or premium content for the master brand, or to highlight a service tier in internal products. Custom labels may be created.
 
+#### Standard Label Sizes
+
+This table outlines the possible standard label sizes.
+
+| Size  | Description                                 | Brand support                |
+|-------|---------------------------------------------|------------------------------|
+| big   | Label with increased font size and padding. | master, internal, whitelabel |
+| small | Label with decreased font size and padding. | master, internal, whitelabel |
+
+#### Standard Label States
+
+This table outlines the possible standard label states. Custom states may also be created.
+
+| Size                 | Description                                                   | Brand support |
+|----------------------|---------------------------------------------------------------|---------------|
+| content-commercial   | Used to identify paid posts or promoted content.              | master        |
+| content-premium      | Used to identify premium content.                             | master        |
+| lifecycle-beta       | Used to identify a feature that's in beta.                    | master        |
+| support-active       | Used to indicate that a component is actively maintained.     | internal      |
+| support-maintained   | Used to indicate that a component is maintained.              | internal      |
+| support-experimental | Used to indicate that a component is an experimental feature. | internal      |
+| support-deprecated   | Used to indicate that a component is deprecated.              | internal      |
+| support-dead         | Used to indicate that a component is no longer worked on.     | internal      |
+| tier-platinum        | Used to indicate a service with a platinum service tier.      | internal      |
+| tier-gold            | Used to indicate a service with a gold service tier.          | internal      |
+| tier-silver          | Used to indicate a service with a silver service tier.        | internal      |
+| tier-bronze          | Used to indicate a service with a bronze service tier.        | internal      |
+
 ### Indicator Label
 
-The indicator label is used to show article status with new, updated, and live variants. The indicator label only supports the master brand but [internal brand support is under consideration](https://github.com/Financial-Times/o-labels/issues/58).
+The indicator label is used to show story status with new, updated, and live variants. The indicator label only supports the master brand but [internal brand support is under consideration](https://github.com/Financial-Times/o-labels/issues/58).
+
+#### Indicator Label Status
+
+This table outlines the possible indicator label statuses:
+
+| Size                 | Description                                                   | Brand support |
+|----------------------|---------------------------------------------------------------|---------------|
+| live                 | Indicate a story is live.                                     | master        |
+| new                  | Indicate a story is new.                                      | master        |
+| updated              | Indicate a story has been updated.                            | master        |
 
 ### Timestamp Label
 
@@ -136,71 +174,74 @@ As with the indicator label, we recommend using [o-date](https://registry.origam
 
 ## Sass
 
-### Mixin: `oLabels`
-
-The `oLabels` mixin is used to output base styles as well as styles for _all_ of the label sizes and states. This output includes the `o-labels` classes:
+Output all label styles with the `oLabels` mixin:
 
 ```scss
 @include oLabels();
 ```
 
-```css
-.o-labels {
-	/* styles */
-}
-.o-labels--big {
-	/* styles */
-}
-/* etc. */
-```
+Or pass an options map `$opts` argument to output just the label styles you need. Options include:
 
-If you wish to specify a subset of sizes and states to output styles for, you can pass in options (see [sizes](#sizes) and [states](#states) for available options):
+- sizes: a list of standard label sizes to output (see [available sizes](#standard-label-sizes))
+- states: a list of standard label states to output (see [available states](#standard-label-states)))
+- indicators
+	- status: a list of indicator label statuses to output (see [available statuses](#indicator-label-status))
+	- inverse
+- timestamp
+	- inverse
 
 ```scss
 @include oLabels($opts: (
+	// standard label sizes to output
+	// e.g. .o-labels--big
 	'sizes': ('big'),
+	// standard label states to output
+	// e.g. .o-labels--content-commercial
 	'states': (
 		'content-commercial',
 		'content-premium'
+	),
+	// indicator label labels to output
+	// .o-labels-indicator
+	'indicators': (
+		// indicator label statuses to output
+		// .o-labels-indicator--live
+		'status': ('live'),
+		// whether to output the indicator label inverse style
+		// .o-labels-indicator--inverse
+		'inverse': true,
+	),
+	// output the timestamp label label
+	// .o-labels-timestamp
+	'timestamp': (
+		// whether to output the timestamp label inverse style
+		// .o-labels-timestamp--inverse
+		'inverse': true
 	)
 ));
 ```
 
-### Mixin: `oLabelsAddState`
+### Custom Standard Label State
 
-The `oLabelsAddState` mixin can be used to output a class for one of the label states, outlined in the [states table](#states):
-
-```scss
-@include oLabelsAddState('content-commercial');
-```
-
-```css
-.o-labels--content-commercial {
-	/* styles */
-}
-```
-
-The `oLabelsAddState` mixin also accepts optional custom configurations, which override defaults or allow you to define your own label states:
+Use `oLabelsAddState` mixin to add a custom label state for the standard label. See the [`oLabelsAddState` SassDoc](https://registry.origami.ft.com/components/o-labels/sassdoc?brand=master#mixin-olabelsaddstate) for more details.
 
 ```scss
+// outputs a class .o-labels--citrus-fruit
 @include oLabelsAddState('citrus-fruit', (
 	background-color: oColorsByName('lemon')
 ));
 ```
 
-```css
-.o-labels--citrus-fruit {
-	/* styles */
-}
-```
+### Custom Markup
 
-### Mixin: `oLabelsContent`
+When it's not possible to use an `o-labels` CSS class, for example within another Origami component, use:
+- `oLabelsContent` to output a standard label with a custom class.
+- `oLabelsIndicatorContent` to output an indicator label with a custom class.
+- `oLabelsTimestampContent` to output a timestamp label with a custom class.
 
-When it's not possible to use an `o-labels` CSS class, for example within another Origami component, use `oLabelsContent` to output a standard label with a custom class.
+If it is possible to use `o-labels` classes we recommend [oLabels](#sass) and [oLabelsAddStates](#custom-standard-label-state) instead. Using these will help reduce the size of your CSS bundle where multiple labels are used.
 
-_For an indicator label see `oLabelsIndicatorContent`, and for a timestamp label see `oLabelsTimestampContent`._
-
-If it is possible to use `o-labels` classes we recommend [oLabels](#mixin-olabels) and [oLabelsAddStates](#mixin-olabelsaddstate) instead. Using these will help reduce the size of your CSS bundle where mutliple labels are used.
+### oLabelsContent
 
 `oLabelsContent` accepts an `$opts` argument which is a map of options. To output styles required by all labels set "base" to "true". Then set the labels "[sizes](#size)" and its "[state](#states)". Any of these options may be output independently.
 
@@ -228,34 +269,28 @@ To output a custom label:
 }
 ```
 
-### Sizes
+### oLabelsIndicatorContent
 
-This table outlines all of the possible sizes you can request in the [`oLabels` mixin](#mixin-olabels):
+As styles for the indicator label apply to multiple html elements, the `oLabelsIndicatorContent` accepts an `$opts` argument to output styles for each element separately.
 
-| Size  | Description                                 | Brand support                |
-|-------|---------------------------------------------|------------------------------|
-| big   | Label with increased font size and padding. | master, internal, whitelabel |
-| small | Label with decreased font size and padding. | master, internal, whitelabel |
-
-### States
-
-This table outlines all of the possible states you can request in the [`oLabels` mixin](#mixin-olabels) and [`oLabelsAddState` mixin](#mixin-olabelsaddstate):
-
-| Size                 | Description                                                   | Brand support |
-|----------------------|---------------------------------------------------------------|---------------|
-| content-commercial   | Used to identify paid posts or promoted content.              | master        |
-| content-premium      | Used to identify premium content.                             | master        |
-| lifecycle-beta       | Used to identify a feature that's in beta.                    | master        |
-| support-active       | Used to indicate that a component is actively maintained.     | internal      |
-| support-maintained   | Used to indicate that a component is maintained.              | internal      |
-| support-experimental | Used to indicate that a component is an experimental feature. | internal      |
-| support-deprecated   | Used to indicate that a component is deprecated.              | internal      |
-| support-dead         | Used to indicate that a component is no longer worked on.     | internal      |
-| tier-platinum        | Used to indicate a service with a platinum service tier.      | internal      |
-| tier-gold            | Used to indicate a service with a gold service tier.          | internal      |
-| tier-silver          | Used to indicate a service with a silver service tier.        | internal      |
-| tier-bronze          | Used to indicate a service with a bronze service tier.        | internal      |
-
+```scss
+// equivalent to .o-labels-indicator
+.my-indicator-label {
+	@include oLabelsIndicatorContent($opts: ('block': true));
+}
+// equivalent to .o-labels-indicator--live
+.my-indicator-label--live {
+	@include oLabelsIndicatorContent($opts: ('block': true, 'modifier': 'live'));
+}
+// equivalent to .o-labels-indicator__status
+.my-indicator-label__status {
+	@include oLabelsIndicatorContent($opts: ('element': 'status'));
+}
+// equivalent to .o-labels-indicator__timestamp
+.my-indicator-label__timestamp {
+	@include oLabelsIndicatorContent($opts: ('element': 'timestamp'));
+}
+```
 
 ## Migration guide
 
