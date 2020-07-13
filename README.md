@@ -2,23 +2,45 @@
 
 Labels for content classification or to emphasise a value.
 
+- [Label Types](#label-types)
 - [Markup](#markup)
 - [Sass](#sass)
 - [Migration guide](#migration-guide)
 - [Contact](#contact)
 - [Licence](#licence)
 
+## Label Types
+
+There are three types of label:
+- A standard label, the default.
+- An indicator label.
+- A timestamp label.
+
+### Standard Label
+
+The standard label is used for content classification or to emphasise a value. For example to highlight commercial or premium content for the master brand, or to highlight a service tier in internal products. Custom labels may be created.
+
+### Indicator Label
+
+The indicator label is used to show article status with new, updated, and live variants. The indicator label only supports the master brand but [internal brand support is under consideration](https://github.com/Financial-Times/o-labels/issues/58).
+
+### Timestamp Label
+
+The timestamp label is used to show article status in place of an indicator label when the article is not new, updated, or live. The timestamp label only supports the master brand.
+
 ## Markup
 
-The most minimal markup for a label is as follows:
+### Standard Label Markup
+
+The most minimal markup for a standard label is as follows:
 
 ```html
 <span class="o-labels">Label</span>
 ```
 
-Labels are displayed inline so including the above markup in a paragraph, for example, will make it sit alongside the text.
+Standard labels are displayed inline so including the above markup in a paragraph, for example, will make it sit alongside the text.
 
-There are several size modifier classes which can be used to change the general appearance of a label:
+There are several size modifier classes which can be used to change the general appearance of a standard label:
 
 ```html
 <span class="o-labels o-labels--big">Big Label</span>
@@ -27,9 +49,7 @@ There are several size modifier classes which can be used to change the general 
 
 Labels can also have one of several states. The available states depend on which brand you are using (there are no states for whitelabel branded components):
 
-### Masterbrand
-
-The following states are used to categorise content, mostly on FT.com:
+The following master brand states are used to categorise content, mostly on FT.com:
 
 ```html
 <span class="o-labels o-labels--content-commercial">Paid Post</span> (used for paid post and promoted content)
@@ -42,9 +62,7 @@ The following state is used to indicate that a feature is in a beta state:
 <span class="o-labels o-labels--lifecycle-beta">Beta</span>
 ```
 
-### Internal
-
-The following states are used to represent the different support levels of Origami components:
+The following internal brand states are used to represent the different support levels of Origami components:
 
 ```html
 <span class="o-labels o-labels--support-active">Active</span>
@@ -54,7 +72,7 @@ The following states are used to represent the different support levels of Origa
 <span class="o-labels o-labels--support-dead">Dead</span>
 ```
 
-The following states are used to represent the FT's service tiers:
+The following internal brand states are used to represent the FT's service tiers:
 
 ```html
 <span class="o-labels o-labels--support-platinum">Platinum</span>
@@ -62,6 +80,59 @@ The following states are used to represent the FT's service tiers:
 <span class="o-labels o-labels--support-silver">Silver</span>
 <span class="o-labels o-labels--support-bronze">Bronze</span>
 ```
+
+### Indicator Label Markup
+
+Indicator labels have one of three statuses:
+- `live`
+- `updated`
+- `new`
+
+Use the following markup for a live label:
+```html
+<span class="o-labels-indicator o-labels-indicator--live">
+    <span class="o-labels-indicator__status">
+		live
+    </span>
+</span>
+```
+
+For an updated or new label, use the associated modifier class, e.g. `o-labels-indicator--updated`, and add a child element `o-labels-indicator__timestamp` to show the new/updated time. We recommend using [o-date](https://registry.origami.ft.com/components/o-date) to format the timestamp element.
+
+```html
+<span class="o-labels-indicator o-labels-indicator--new">
+    <span class="o-labels-indicator__status">
+        new
+    </span>
+    <time class="o-labels-indicator__timestamp">
+        <!-- demo `time` element only (the datetime is not 1 hour ago) -->
+        <time datetime="2020-07-09T12:52:33+0000" title="July 9 2020 1:52 pm" aria-label="1 hours ago">1 hour ago</time>
+    </time>
+</span>
+```
+
+Indicator labels also support an inverse theme for use on dark backgrounds. To use an inverse theme add the `o-labels-indicator--inverse` class to your markup.
+```diff
+-<span class="o-labels-indicator o-labels-indicator--live">
++<span class="o-labels-indicator o-labels-indicator--live o-labels-indicator--inverse">
+    <span class="o-labels-indicator__status">
+		live
+    </span>
+</span>
+```
+
+## Timestamp Markup
+
+To include a timestamp label use the following markup. Note the timestamp label also supports an optional inverse variant for dark background with the `o-labels-timestamp--inverse` class:
+
+```html
+<time class="o-labels-timestamp o-labels-timestamp--inverse">
+    <!-- demo `time` element only -->
+    <time datetime="2016-02-29T12:35:48Z" title="February 29 2016 12:35 pm" aria-label="February 29 2016">February 29 2016</time>
+</time>
+```
+
+As with the indicator label, we recommend using [o-date](https://registry.origami.ft.com/components/o-date) to format the timestamp element.
 
 ## Sass
 
@@ -125,7 +196,9 @@ The `oLabelsAddState` mixin also accepts optional custom configurations, which o
 
 ### Mixin: `oLabelsContent`
 
-When it's not possible to use an `o-labels` CSS class, for example within another Origami component, use `oLabelsContent` to output a label with a custom class.
+When it's not possible to use an `o-labels` CSS class, for example within another Origami component, use `oLabelsContent` to output a standard label with a custom class.
+
+_For an indicator label see `oLabelsIndicatorContent`, and for a timestamp label see `oLabelsTimestampContent`._
 
 If it is possible to use `o-labels` classes we recommend [oLabels](#mixin-olabels) and [oLabelsAddStates](#mixin-olabelsaddstate) instead. Using these will help reduce the size of your CSS bundle where mutliple labels are used.
 
