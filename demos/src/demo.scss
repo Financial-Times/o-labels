@@ -4,9 +4,7 @@ $o-labels-is-silent: false;
 @import "../../main";
 
 body {
-	// Important used to ensure that this overrides the `body` specificity
-	// provided by the build service
-	margin: 1em !important; // stylelint-disable-line declaration-no-important
+	padding: 1rem;
 }
 
 html {
@@ -15,10 +13,6 @@ html {
 
 .demo-inverse {
 	background: oColorsByName('slate');
-}
-
-.demo-container {
-	margin-bottom: 1em;
 }
 
 // custom standard label markup
