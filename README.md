@@ -12,9 +12,9 @@ Labels for content classification, to emphasise a value, or highlight a status.
 ## Label Types
 
 There are three types of label:
-- A standard label, the default.
-- An indicator label.
-- A timestamp label.
+- [A standard label](#standard-label), the default.
+- [An indicator label](#indicator-label).
+- [A timestamp label](#timestamp-label).
 
 ### Standard Label
 
