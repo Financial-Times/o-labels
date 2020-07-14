@@ -59,7 +59,7 @@ This table outlines the possible indicator label statuses:
 | Size                 | Description                                                   | Brand support |
 |----------------------|---------------------------------------------------------------|---------------|
 | live                 | Indicate a story is live.                                     | master        |
-| live                 | Indicate a live story is no longer live.                                     | master        |
+| closed               | Indicate a live story is no longer live.                      | master        |
 | new                  | Indicate a story is new.                                      | master        |
 | updated              | Indicate a story has been updated.                            | master        |
 
@@ -137,8 +137,16 @@ Use the following markup for a live label:
 </span>
 ```
 
-For a closed, updated, or new label, use the associated modifier class, e.g. `o-labels-indicator--updated`, and add a child element `o-labels-indicator__timestamp` to show the new/updated time. We recommend using [o-date](https://registry.origami.ft.com/components/o-date) to format the timestamp element.
+Use the modifier class `o-labels-indicator--closed` for a closed label:
+```html
+<span class="o-labels-indicator o-labels-indicator--closed">
+    <span class="o-labels-indicator__status">
+		closed
+    </span>
+</span>
+```
 
+For an updated or new label use the associated modifier class, e.g. `o-labels-indicator--updated`, and add a child element `o-labels-indicator__timestamp` to show the new/updated time. We recommend using [o-date](https://registry.origami.ft.com/components/o-date) to format the timestamp element.
 ```html
 <span class="o-labels-indicator o-labels-indicator--new">
     <span class="o-labels-indicator__status">
