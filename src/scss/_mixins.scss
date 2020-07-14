@@ -128,6 +128,9 @@
 ///    .my-indicator-label--updated {
 ///        @include oLabelsIndicatorContent($opts: ('block': true, 'modifier': 'updated'));
 ///    }
+///    .my-indicator-label--closed {
+///        @include oLabelsIndicatorContent($opts: ('block': true, 'modifier': 'closed'));
+///    }
 ///    .my-indicator-label--live {
 ///        @include oLabelsIndicatorContent($opts: ('block': true, 'modifier': 'live'));
 ///    }
@@ -197,18 +200,22 @@
 }
 
 /// Styles for indicator label statuses.
-/// @param {Sting} $status - An existing indicator status e.g. live, new, updated
+/// @param {Sting} $status - An existing indicator status e.g. live, closed, new, updated
 /// @access private
 @mixin _oLabelsIndicatorStatusContent($status) {
 	@if not index($_o-labels-indicator-status, $status) {
 		@error '"#{$status}" is not an indicator label status. ' +
 			'Expected one or more of the following statuses: #{$_o-labels-indicator-status}.';
 	}
-	// all indicator labels are currently timestamps with the same colour,
-	// it is not possible to customise indicator labels currently but this
+	// All indicator labels currently use the same colour except the "closed".
+	// It is not possible to customise indicator labels currently but this
 	// may be added in the future, e.g. for the internal brand:
 	// https://github.com/Financial-Times/o-labels/issues/58
-	@extend %_o-labels-indicator-live-color;
+	@if $status == 'closed' {
+		@extend %_o-labels-indicator-closed-color;
+	} @else {
+		@extend %_o-labels-indicator-live-color;
+	}
 	@extend %_o-labels-timestamp-typography;
 
 	@if($status == 'live') {

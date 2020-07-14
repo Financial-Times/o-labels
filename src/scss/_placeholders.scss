@@ -20,6 +20,12 @@ $_o-labels-first-import: true !default;
 		color: oColorsByName('crimson');
 	}
 
+	// must come after %_o-labels-timestamp-typography
+	// for higher specificity
+	%_o-labels-indicator-closed-color {
+		color: oColorsByName('black-60');
+	}
+
 	%_o-labels-indicator-circle {
 		content: '';
 		position: relative;
@@ -38,6 +44,9 @@ $_o-labels-first-import: true !default;
 		@extend %_o-labels-indicator-size;
 	}
 
+	// must come after other colour placeholders
+	// e.g. %_o-labels-indicator-live-color
+	// for higher specificity
 	%_o-labels-timestamp--inverse {
 		color: oColorsByName('white');
 	}
