@@ -36,6 +36,7 @@ $_o-labels-first-import: true !default;
 		border-radius: 50%;
 		background-color: currentcolor;
 		display: inline-block;
+		align-self: center;
 	}
 
 	// timestamp block placeholders
@@ -60,7 +61,7 @@ $_o-labels-first-import: true !default;
 
 	%_o-labels-indicator__status {
 		display: inline-flex;
-		align-items: center;
+		align-items: baseline;
 		&:before {
 			@extend %_o-labels-indicator-circle;
 		}
