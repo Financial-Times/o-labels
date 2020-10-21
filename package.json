@@ -1,5 +1,5 @@
 {
-    "name": "o-labels",
+    "name": "@financial-times/o-labels",
     "devDependencies": {
         "eslint": "^7.8.1",
         "eslint-config-origami-component": "^2.1.0",
