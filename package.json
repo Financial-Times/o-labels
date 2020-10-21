@@ -12,11 +12,11 @@
     },
     "main": "main.js",
     "peerDependencies": {
-        "@financial-times/o-brand": "^3.2.5",
-        "@financial-times/o-colors": "^5.0.0",
-        "@financial-times/o-editorial-typography": "^1.0.10",
-        "@financial-times/o-spacing": "^2.0.0",
-        "@financial-times/o-typography": "^6.0.0"
+        "@financial-times/o-brand": "^100.0.0-3",
+        "@financial-times/o-colors": "^100.0.0-3",
+        "@financial-times/o-editorial-typography": "^100.0.0-3",
+        "@financial-times/o-spacing": "^100.0.0-3",
+        "@financial-times/o-typography": "^100.0.0-3"
     },
     "description": "Labels for content classification or to emphasise a value. Provides customisation options with the FT colour palette.",
     "publishConfig": {
