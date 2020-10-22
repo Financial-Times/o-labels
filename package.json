@@ -12,15 +12,15 @@
     },
     "main": "main.js",
     "peerDependencies": {
-        "@financial-times/o-brand": "^100.0.0-5",
-        "@financial-times/o-colors": "^100.0.0-5",
-        "@financial-times/o-editorial-typography": "^100.0.0-5",
-        "@financial-times/o-spacing": "^100.0.0-5",
-        "@financial-times/o-typography": "^100.0.0-5"
+        "@financial-times/o-brand": "^100.0.0-6",
+        "@financial-times/o-colors": "^100.0.0-6",
+        "@financial-times/o-editorial-typography": "^100.0.0-6",
+        "@financial-times/o-spacing": "^100.0.0-6",
+        "@financial-times/o-typography": "^100.0.0-6"
     },
     "description": "Labels for content classification or to emphasise a value. Provides customisation options with the FT colour palette.",
     "publishConfig": {
         "registry": "http://localhost:4873"
     },
-    "version": "100.0.0-5"
+    "version": "100.0.0-6"
 }
