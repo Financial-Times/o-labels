@@ -1,6 +1,6 @@
 {
   "name": "@financial-times/o-labels",
-  "version": "100.0.0-10",
+  "version": "100.0.0-11",
   "description": "Labels for content classification or to emphasise a value. Provides customisation options with the FT colour palette.",
   "keywords": [],
   "homepage": "https://github.com/Financial-Times/o-labels#readme",
@@ -33,11 +33,11 @@
     "typescript": "^4.0.5"
   },
   "peerDependencies": {
-    "@financial-times/o-brand": "^100.0.0-10",
-    "@financial-times/o-colors": "^100.0.0-10",
-    "@financial-times/o-editorial-typography": "^100.0.0-10",
-    "@financial-times/o-spacing": "^100.0.0-10",
-    "@financial-times/o-typography": "^100.0.0-10"
+    "@financial-times/o-brand": "^100.0.0-11",
+    "@financial-times/o-colors": "^100.0.0-11",
+    "@financial-times/o-editorial-typography": "^100.0.0-11",
+    "@financial-times/o-spacing": "^100.0.0-11",
+    "@financial-times/o-typography": "^100.0.0-11"
   },
   "publishConfig": {
     "registry": "https://origami-npm-registry-prototype.herokuapp.com"
